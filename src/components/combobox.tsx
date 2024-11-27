@@ -81,7 +81,7 @@ const Combobox: React.FC<{
                 {items?.map((item) => (
                   <CommandItem
                     key={item.value}
-                    value={item.value.toString()}
+                    value={item.label.toString()}
                     className="w-full"
                     onSelect={() => {
                       !fieldName &&

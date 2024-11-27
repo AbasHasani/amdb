@@ -22,12 +22,12 @@ export const AnimatedTabs = ({
         }[]
       | null;
   }[];
-  classNames: string;
+  classNames?: string;
   notLink?: boolean;
   callback?: (val: string | null) => void;
 }) => {
   return (
-    <div className={classNames}>
+    <div className={classNames || ""}>
       <div className="flex w-full lg:space-x-2 rounded-xl border border-zinc-950/10 lg:p-2">
         <AnimatedBackground
           defaultValue={TABS[0].label}

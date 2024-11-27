@@ -28,7 +28,7 @@ const formSchema = z.object({
   type: z.enum(["movie", "tv"]), // Accepts only "movie" or "tv"
   language: z.union([z.string().min(2), z.literal("")]).optional(), // Accepts any string
   with_genres: z.union([z.string().min(1), z.literal("")]).optional(), // z.array(z.number()), // Accepts an array of numbers
-  rating: z.union([z.string().min(1).max(2), z.literal("")]).optional(), // Accepts a number
+  rating: z.union([z.string().min(1).max(3), z.literal("")]).optional(), // Accepts a number
   primary_release_year: z
     .union([z.string().length(4), z.literal("")])
     .optional(), // Accepts a number
@@ -50,27 +50,12 @@ const languages = [
   { value: "pt-BR", label: "Portuguese" },
 ];
 
-export function DiscoverForm({ setOpen }: { setOpen: (cb: boolean) => void }) {
-  const searchParams: {
-    type: "movie" | "tv";
-    language: string;
-    "vote_average.gte": string;
-    with_genres: string;
-    rating: string;
-    primary_release_year: string;
-    with_origin_country: string;
-    first_air_date_year: string;
-  } = {
-    type: "movie",
-    language: "",
-    "vote_average.gte": "",
-    with_genres: "",
-    rating: "",
-    primary_release_year: "",
-    with_origin_country: "",
-    first_air_date_year: "",
-  };
-  // 1. Define your form.
+export function DiscoverForm({
+  searchParams,
+}: {
+  searchParams: DiscoverParams;
+}) {
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -88,11 +73,7 @@ export function DiscoverForm({ setOpen }: { setOpen: (cb: boolean) => void }) {
   const { setValue, watch } = form;
   const type = watch("type");
   const router = useRouter();
-  // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    setOpen(false);
     router.push(
       generateDiscoverUrl({
         ...values,
@@ -119,14 +100,18 @@ export function DiscoverForm({ setOpen }: { setOpen: (cb: boolean) => void }) {
               <FormControl>
                 <AnimatedTabs
                   notLink
-                  classNames="w-[8px]"
                   callback={(val) => {
                     //@ts-ignore
                     setValue("type", val?.toLowerCase());
                     console.log(val?.toLowerCase());
                   }}
                   TABS={[
-                    { label: "Movie", id: "movie", expandble: false, items: null },
+                    {
+                      label: "Movie",
+                      id: "movie",
+                      expandble: false,
+                      items: null,
+                    },
                     { label: "TV", id: "tv", expandble: false, items: null },
                   ]}
                 />

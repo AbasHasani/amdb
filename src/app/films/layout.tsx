@@ -68,7 +68,8 @@ const TABS = [
   },
 ];
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = async ({ children }: { children: React.ReactNode }) => {
+
   return (
     <div className="text-green-100 p-2 lg:p-3 container">
       <div className="flex flex-col lg:flex-row lg:items-center">
