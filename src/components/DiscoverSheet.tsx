@@ -47,7 +47,7 @@ const DiscoverSheet = () => {
           <SheetTitle>Filter by anything you want</SheetTitle>
         </SheetHeader>
         <div className="mt-5 lg:p-5 flex flex-col gap-3">
-          {/* <pre>{JSON.stringify(searchParams, null, 2)}</pre> */}
+          {/* @ts-ignore */}
           <DiscoverForm searchParams={params} />
         </div>
       </SheetContent>
