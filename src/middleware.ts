@@ -10,6 +10,7 @@ export default async function middleware(req: NextRequest) {
     const cookie = (await cookies()).get("session")?.value;
     const session = await decrypt(cookie!);
     console.log("Cookie:", cookie);
+    console.log("Secret:", process.env.SECRET);
     console.log("Session:", session);
 
     if (!session?.accountId) {

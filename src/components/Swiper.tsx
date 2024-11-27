@@ -117,7 +117,7 @@ const Swiper: FC<MovieListType> = ({ data }) => {
                       {truncateAfterSpace(item.overview, 250)}
                     </p>
                     <Link
-                      href={`/film/${item.id}`}
+                      href={`/film/${item.title ? "" : "tv-"}${item.id}`}
                       className="justify-self-end"
                     >
                       <Button
