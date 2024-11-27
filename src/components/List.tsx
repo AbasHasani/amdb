@@ -18,7 +18,9 @@ import HoverContent from "./HoverContent";
 import AccountStates from "./AccountStates";
 import { TextEffect } from "./core/text-effect";
 import { verifySession } from "@/lib/session";
-
+import AddToListBtn from "./AddToListBtn";
+import AddToListDialouge from "./AddToListDialouge";
+import { List as ListIcon } from "lucide-react";
 const List: FC<any> = ({ data, type, title }) => {
   const [api, setApi] = useState<CarouselApi>();
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -72,9 +74,9 @@ const List: FC<any> = ({ data, type, title }) => {
           {data.map((item: any, i: number) => (
             <CarouselItem
               key={item.id + (item.title || item.name) + i}
-              className={`md:basis-1/4 sm:basis-1/4 basis-1/2 bg-slate-900`}
+              className={`md:basis-1/4 sm:basis-1/4 basis-3/5`}
             >
-              <HoverContent>
+              <HoverContent list>
                 <Link
                   href={`/${type === "movie" ? "film" : "cast"}/${
                     type === "movie" && !item.title ? "tv-" : ""
@@ -116,11 +118,20 @@ const List: FC<any> = ({ data, type, title }) => {
                         size={40}
                       />
                       {type == "movie" && (
-                        <AccountStates
-                          type={item.title ? "movie" : "tv"}
-                          id={item.id}
-                          isSignedIn={isSignedIn}
-                        />
+                        <div className="flex items-center">
+                          <AccountStates
+                            type={item.title ? "movie" : "tv"}
+                            id={item.id}
+                            isSignedIn={isSignedIn}
+                          />
+                          <AddToListDialouge
+                            icon={<ListIcon />}
+                            isSignedIn={isSignedIn}
+                            id={item.id}
+                            type={item.title ? "movie" : "tv"}
+                            marginTop
+                          />
+                        </div>
                       )}
                     </div>
                     <div className="flex flex-col justify-center">

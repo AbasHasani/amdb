@@ -1,6 +1,13 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -14,17 +21,20 @@ import { ToastAction } from "./ui/toast";
 import { getLists, updateListItems } from "@/lib/actions/user.actions";
 import { Loader2 } from "lucide-react";
 import Combobox from "./combobox";
+import useClickOutside from "@/hooks/useClickOutside";
 
 const AddToListDialouge = ({
   icon,
   isSignedIn,
   id,
   type,
+  marginTop,
 }: {
   icon: JSX.Element;
   isSignedIn: boolean;
   type: "movie" | "tv";
   id: string | number;
+  marginTop?: boolean;
 }) => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
@@ -37,12 +47,12 @@ const AddToListDialouge = ({
     try {
       const Lists = await getLists();
       setLists(
-        Lists.results.map(({ id, name }: { id: string; name: string }) => ({
+        Lists?.results?.map(({ id, name }: { id: string; name: string }) => ({
           label: name,
           value: id,
         }))
       );
-      console.log(Lists);
+      console.log("Lists");
     } catch (error) {
       console.log(error);
     }
@@ -136,17 +146,37 @@ const AddToListDialouge = ({
       });
     }
   };
+  const contentRef = useRef(null);
+  useClickOutside(contentRef, () => setIsOpen(false));
+
   return (
-    <Dialog>
+    <Dialog
+      open={isOpen}
+      modal={marginTop ? false : true}
+      onOpenChange={setIsOpen}
+    >
       <DialogTrigger
-        className="text-gray-400 bg-transparent hover:bg-gray-600/40 hover:text-green-300 [&_svg]:size-5 py-2 px-4 rounded-md shadow text-sm"
-        onClick={() => {
+        className={`${
+          marginTop ? "-mt-8 lg:-mt-0 lg:hidden" : ""
+        } text-gray-400 bg-transparent hover:bg-gray-600/40 hover:text-green-300 [&_svg]:size-5 lg:py-2 lg:px-4 px-2 rounded-md shadow text-sm`}
+        onClick={(e) => {
           setIsOpen(!isOpen);
+          e.stopPropagation();
+          e.preventDefault();
+        }}
+        asChild
+      >
+        <Button className="">
+          {loading ? <Loader2 className="animate-spin" /> : icon}
+        </Button>
+      </DialogTrigger>
+      <DialogContent
+        ref={contentRef}
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
         }}
       >
-        {loading ? <Loader2 className="animate-spin" /> : icon}
-      </DialogTrigger>
-      <DialogContent>
         <DialogHeader>
           <DialogTitle className="mb-3">Add or update your rating</DialogTitle>
           <DialogDescription className="flex flex-col"></DialogDescription>

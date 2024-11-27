@@ -102,7 +102,7 @@ const AddRatingDialouge = ({
   return (
     <Dialog>
       <DialogTrigger
-        className="text-gray-400 bg-transparent hover:bg-gray-600/40 hover:text-green-300 [&_svg]:size-5 py-2 px-4 rounded-md shadow text-sm"
+        className="text-gray-400 bg-transparent hover:bg-gray-600/40 hover:text-green-300 [&_svg]:size-5 lg:py-2 lg:px-4 px-2 rounded-md shadow text-sm"
       >
         {loading ? <Loader2 className="animate-spin" /> : accountRating || icon}
       </DialogTrigger>

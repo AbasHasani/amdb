@@ -22,7 +22,7 @@ const Details: FC<{ data: MovieDetailsType } & { hasTrailer?: boolean }> = ({
   const playerHeight = screenWidth <= 600 ? 400 : 600;
 
   return (
-    <div className="relative">
+    <div className="border border-gray-800 rounded-md relative mx-4">
       <ScrollProgressBasic height={playerHeight}>
         <div
           className={`${

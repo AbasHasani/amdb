@@ -176,7 +176,7 @@ export default function ToolbarDynamic({ user }: { user: UserSession | null }) {
           <motion.div
             animate={{
               // @todo: here I want to remove the width
-              width: isOpen ? "500px" : "184px",
+              width: isOpen ? "auto" : "184px",
             }}
             initial={false}
           >
@@ -238,7 +238,7 @@ export default function ToolbarDynamic({ user }: { user: UserSession | null }) {
                   </Button>
                   <div className="relative w-full">
                     <Input
-                      className="h-9 w-full rounded-lg border border-zinc-950/10 bg-transparent p-2 focus-visible:border-zinc-500/50 !placeholder-zinc-300 focus:outline-none text-white"
+                      className="h-9 w-[17rem] lg:w-[23rem] rounded-lg border border-zinc-950/10 bg-transparent p-2 focus-visible:border-zinc-500/50 !placeholder-zinc-300 focus:outline-none text-white"
                       autoFocus
                       placeholder="Search notes"
                       value={searchTerm}

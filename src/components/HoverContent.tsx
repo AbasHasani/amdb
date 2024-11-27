@@ -6,9 +6,11 @@ import { BorderTrail } from "./core/border-trail";
 const HoverContent = ({
   children,
   background,
+  list
 }: {
   children: React.ReactNode;
   background?: string;
+  list?: boolean;
 }) => {
   const { x, y } = useMouse({ type: "page" });
   const element = useRef<HTMLDivElement | null>(null);
@@ -52,7 +54,7 @@ const HoverContent = ({
       <div
         className={`relative ${
           background ? background : "bg-gray-950/70"
-        } z-10 rounded-xl h-full lg:min-h-[13rem] max-h-[23rem] lg:max-h-none`}
+        } z-10 rounded-xl h-full lg:min-h-[13rem] ${list ? "max-h-[26rem]" : ""} lg:max-h-none`}
       >
         {children}
       </div>

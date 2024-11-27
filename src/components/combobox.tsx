@@ -78,7 +78,7 @@ const Combobox: React.FC<{
             <CommandList className="">
               <CommandEmpty>No item found.</CommandEmpty>
               <CommandGroup className="w-full">
-                {items.map((item) => (
+                {items?.map((item) => (
                   <CommandItem
                     key={item.value}
                     value={item.value.toString()}

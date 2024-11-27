@@ -285,6 +285,7 @@ export default function ComboboxDropdownMenu({
                   setIsRatingOpen(false);
                   setIsListOpen((prev) => !prev);
                 }}
+                className="hidden lg:flex cursor-pointer"
               >
                 <List />
                 Add to list
