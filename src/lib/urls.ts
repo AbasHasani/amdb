@@ -49,7 +49,10 @@ export const generateDiscoverUrl = ({
   };
   // Remove undefined keys
   const filteredParams = Object.fromEntries(
-    Object.entries(params).filter(([_, value]) => value !== undefined)
+    Object.entries(params).filter(([_, value]) => {
+      console.log(_);
+      return value !== undefined
+    })
   );
 
   // Generate the query string

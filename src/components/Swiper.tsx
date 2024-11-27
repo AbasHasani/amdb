@@ -74,7 +74,8 @@ const Swiper: FC<MovieListType> = ({ data }) => {
       </div>
       <CarouselContent className="w-full md:h-[40rem] sm:h-[30rem] h-[20rem] !p-0 !m-0">
         {data.map((item) => {
-          const genres = item.media_type == "movie" ? movieGenres : tvGenres;
+          const genres: any =
+            item.media_type == "movie" ? movieGenres : tvGenres;
           return (
             <CarouselItem
               key={item.id}
@@ -105,7 +106,7 @@ const Swiper: FC<MovieListType> = ({ data }) => {
                   </div>
                   <p className="flex gap-2 lg:mt-10 mb-3">
                     {genres.map(
-                      (genre) =>
+                      (genre: any) =>
                         item.genre_ids.includes(genre.value) && (
                           <span key={genre.value}>{genre.label}</span>
                         )
@@ -119,7 +120,10 @@ const Swiper: FC<MovieListType> = ({ data }) => {
                       href={`/film/${item.id}`}
                       className="justify-self-end"
                     >
-                      <Button className="bg-transparent border border-zinc-600 text-white  shadow-zinc-400/50 transition-all hover:bg-gray-600/30" variant={"outline"}>
+                      <Button
+                        className="bg-transparent border border-zinc-600 text-white  shadow-zinc-400/50 transition-all hover:bg-gray-600/30"
+                        variant={"outline"}
+                      >
                         Learn more
                       </Button>
                     </Link>

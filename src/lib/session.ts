@@ -2,7 +2,7 @@
 import "server-only";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { JWTPayload, SignJWT, jwtVerify } from "jose";
+import { SignJWT, jwtVerify } from "jose";
 
 const key = new TextEncoder().encode(process.env.SECRET);
 
@@ -38,6 +38,7 @@ export const decrypt = async (session: string) => {
     });
     return payload;
   } catch (error) {
+    console.log(error);
     return null;
   }
 };

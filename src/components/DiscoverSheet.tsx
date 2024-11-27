@@ -30,13 +30,7 @@ const languages = [
   { value: "pt-BR", label: "Portuguese" },
 ];
 
-const DiscoverSheet = ({
-  // setData,
-  // searchParams,
-}: {
-  // setData: (cb: any) => void;
-  // searchParams: DiscoverParams;
-}) => {
+const DiscoverSheet = () => {
   // const [list, setList] = useState<string | null>("movie");
   // const [rating, setRating] = useState(0);
   const [open, setOpen] = useState(false);

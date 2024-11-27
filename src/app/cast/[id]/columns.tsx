@@ -50,7 +50,7 @@ export const columns: ColumnDef<Cast>[] = [
     accessorKey: "title",
     header: "Title",
     cell: ({ row }) => {
-      const film = row.original;
+      const film: any = row.original;
       const name = film.title || film.name;
       return <div className="capitalize">{name}</div>;
     },

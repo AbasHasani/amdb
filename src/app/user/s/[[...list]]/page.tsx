@@ -1,7 +1,6 @@
 import List from "@/components/List";
 import MovieGrid from "@/components/MovieGrid";
 import { getUserData } from "@/lib/actions/user.actions";
-import { getRemote } from "@/lib/api/tmdb";
 import { urlTypes } from "@/lib/urls";
 
 import React, { Children, FC } from "react";
