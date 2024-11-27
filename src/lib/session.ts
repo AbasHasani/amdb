@@ -21,7 +21,7 @@ export const encrypt = async (payload: {
   accountId: string;
   username: string;
   profile: string;
-  sessionId: string
+  sessionId: string;
   expires: Date;
 }) => {
   return new SignJWT(payload)
@@ -47,14 +47,18 @@ export const createSession = async (data: {
   accountId: string;
   profile: string;
   username: string;
-  sessionId: string
+  sessionId: string;
 }) => {
   const expires = new Date(Date.now() + cookie.duration);
   const session = await encrypt({ ...data, expires });
-  // console.log("Session", session);
-  // console.log("Account id", data);
 
-  (await cookies()).set(cookie.name, session, { ...cookies, expires });
+  (await cookies()).set(cookie.name, session, {
+    secure: true,
+    httpOnly: true,
+    sameSite: "lax",
+    path: "/",
+    expires,
+  });
 };
 
 export const verifySession = async (): Promise<UserSession | null> => {

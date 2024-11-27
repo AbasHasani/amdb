@@ -35,7 +35,7 @@ export default function MovieOrTv({
         }}
       >
         <Button
-          className={`relative flex shrink-0 scale-100 select-none appearance-none items-center justify-center rounded-lg text-white transition-colors hover:bg-gray-500/20 focus-visible:ring-2 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 outline-none`}
+          className={`relative flex shrink-0 scale-100 select-none appearance-none items-center justify-center rounded-lg text-white transition-colors hover:bg-gray-500/20 focus-visible:ring-2 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 outline-none !py-0 !px-2`}
         >
           {!label ? items && items[index].label : label}
         </Button>

@@ -57,12 +57,10 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
             width={200}
             height={200}
             alt="user-image"
-            className="w-[15rem] rounded-full shadow-xl shadow-green-800/30"
+            className="w-[8rem] rounded-full shadow-xl shadow-green-800/30"
           />
         </div>
         <p className="p-3 m-3 font-bold text-lg">{username}</p>
-        <p>AID: {accountId}</p>
-        <p>SI: {sessionId}</p>
         <AnimatedTabs
           TABS={TABS}
           classNames="flex justify-center items-center"

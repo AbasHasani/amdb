@@ -153,7 +153,7 @@ export default function ComboboxDropdownMenu({
     }
   };
   return (
-    <div className="flex flex-col items-start justify-between rounded-md px-4 py-3 sm:flex-row sm:items-center">
+    <div className="flex flex-col items-start justify-between rounded-md px-4 py-3 sm:flex-row sm:items-center -mt-8 lg:-mt-0">
       <DropdownMenu
         open={open}
         onOpenChange={(val) => {

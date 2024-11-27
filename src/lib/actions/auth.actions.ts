@@ -15,7 +15,7 @@ const options = {
     Authorization: process.env.TMDB_API_KEY!,
   },
   body: JSON.stringify({
-    redirect_to: "http://localhost:3000/",
+    redirect_to: process.env.REDIRECT_URL!,
   }),
 };
 

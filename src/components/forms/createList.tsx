@@ -12,7 +12,7 @@ const CreateList = () => {
   const router = useRouter();
   return (
     <div className="flex flex-col gap-3 items-start my-10 ">
-      <div className="flex flex-col gap-3 items-start w-[30rem] bg-gray-950/80 p-3 rounded-md hover:border-green-800/50 border transition-all">
+      <div className="flex flex-col gap-3 items-start w-full lg:w-[30rem] bg-gray-950/80 p-3 rounded-md hover:border-green-800/50 border transition-all">
         <h2>Create new list</h2>
         <div className="w-full">
           <Label className="text-zinc-400" htmlFor="name">

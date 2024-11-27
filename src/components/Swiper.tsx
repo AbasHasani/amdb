@@ -79,7 +79,7 @@ const Swiper: FC<MovieListType> = ({ data }) => {
           return (
             <CarouselItem
               key={item.id}
-              className="w-full basis-full relative overflow-hidden"
+              className="w-full basis-full relative overflow-hidden h-full"
             >
               <FadingImage
                 src={"https://image.tmdb.org/t/p/original" + item.backdrop_path}
@@ -93,7 +93,7 @@ const Swiper: FC<MovieListType> = ({ data }) => {
                   unoptimized
                   alt=""
                 />
-                <div className="text-green-100 relative z-50 p-5">
+                <div className="text-green-100 relative z-50 lg:p-5 pl-5">
                   <div className="flex flex-col">
                     <p className="sm:text-3xl text-lg font-semibold py-3">
                       {item.title || item.name}
@@ -104,7 +104,7 @@ const Swiper: FC<MovieListType> = ({ data }) => {
                       progress={item.vote_average}
                     />
                   </div>
-                  <p className="flex gap-2 lg:mt-10 mb-3">
+                  <p className="flex lg:flex-row flex-col lg:gap-2 text-sm text-gray-400 lg:mt-10 mb-3">
                     {genres.map(
                       (genre: any) =>
                         item.genre_ids.includes(genre.value) && (

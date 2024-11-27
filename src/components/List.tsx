@@ -46,7 +46,7 @@ const List: FC<any> = ({ data, type, title }) => {
       <TextEffect
         per="char"
         preset="fade"
-        className="bg-gradient-to-br from-green-950/50 p-10 flex justify-center items-center to-transparent min-h-10 rounded-md"
+        className="bg-gradient-to-br from-green-950/50 p-10 flex justify-center items-center to-transparent  rounded-md"
       >
         {`Ooops there are no items here!!!`}
       </TextEffect>
@@ -72,7 +72,7 @@ const List: FC<any> = ({ data, type, title }) => {
           {data.map((item: any, i: number) => (
             <CarouselItem
               key={item.id + (item.title || item.name) + i}
-              className={`md:basis-1/4 sm:basis-1/4 basis-1/2`}
+              className={`md:basis-1/4 sm:basis-1/4 basis-1/2 bg-slate-900`}
             >
               <HoverContent>
                 <Link
@@ -103,8 +103,8 @@ const List: FC<any> = ({ data, type, title }) => {
                     />
                   </div>
 
-                  <div className="p-5 flex flex-col gap-2 justify-between bg-gradient-to-t from-gray-900/60 to-transparent flex-1">
-                    <div className="flex justify-between">
+                  <div className="p-5 flex flex-col gap-2 justify-between bg-gradient-to-t from-gray-900/60 to-transparent flex-1 h-full">
+                    <div className="flex justify-between h-full">
                       <CircularProgress
                         isCast={type == "movie" ? false : true}
                         classNames="-mt-8 z-20"
@@ -113,7 +113,7 @@ const List: FC<any> = ({ data, type, title }) => {
                             ? item.vote_average
                             : Math.ceil(item.popularity) / 10
                         }
-                        size={50}
+                        size={40}
                       />
                       {type == "movie" && (
                         <AccountStates
@@ -123,7 +123,7 @@ const List: FC<any> = ({ data, type, title }) => {
                         />
                       )}
                     </div>
-                    <div className="flex flex-col">
+                    <div className="flex flex-col justify-center">
                       {type === "cast" && (
                         <p className="font-light text-gray-400 italic">
                           {item.character}
@@ -132,7 +132,7 @@ const List: FC<any> = ({ data, type, title }) => {
                       <p>
                         {truncateAfterSpace(item.title || item.name || "", 25)}
                       </p>
-                      <p className="pt-3 text-sm font-light text-gray-400">
+                      <p className="hidden lg:block pt-3 text-sm font-light text-gray-400">
                         {truncateAfterSpace(item?.overview || "", 37)}
                       </p>
                     </div>

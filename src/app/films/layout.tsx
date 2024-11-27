@@ -70,10 +70,10 @@ const TABS = [
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="text-green-100 p-3">
-      <div className="flex flex-col lg:flex-row items-center">
+    <div className="text-green-100 p-2 lg:p-3 container">
+      <div className="flex flex-col lg:flex-row lg:items-center">
         <AnimatedTabs TABS={TABS} classNames="" />
-        <div className="ml-10 flex gap-3 mt-3 lg:mt-0">
+        <div className="lg:ml-10 flex lg:flex-row flex-col gap-3 mt-3 lg:mt-0">
           <SearchBar />
           <DiscoverSheet />
         </div>

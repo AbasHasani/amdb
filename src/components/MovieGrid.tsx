@@ -9,7 +9,7 @@ import HoverContent from "./HoverContent";
 
 const MovieGrid: FC<MovieListType> = ({ data }) => {
   return (
-    <div className={`grid gap-3 md:grid-cols-4 grid-cols-2 text-white`}>
+    <div className={`grid gap-3 md:grid-cols-4 grid-cols-1 text-white`}>
       {data.map((item) =>
         item.title || item.name != "null" ? (
           <HoverContent key={item.id} background="bg-black">

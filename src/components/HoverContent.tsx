@@ -26,7 +26,7 @@ const HoverContent = ({
   const { relX, relY } = getRelativePosition();
   return (
     <div
-      className="relative group overflow-hidden bg-gray-800 p-[2px] rounded-xl"
+      className="relative group overflow-hidden bg-gray-800 p-[2px] rounded-xl h-full"
       ref={element}
       // style={
       //   {
@@ -52,7 +52,7 @@ const HoverContent = ({
       <div
         className={`relative ${
           background ? background : "bg-gray-950/70"
-        } z-10 rounded-xl h-full min-h-[13rem]`}
+        } z-10 rounded-xl h-full lg:min-h-[13rem] max-h-[23rem] lg:max-h-none`}
       >
         {children}
       </div>

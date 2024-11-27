@@ -18,15 +18,15 @@ const Heading: FC<{
   isTvShow?: boolean;
 }> = ({ type, data, isTvShow }) => {
   return (
-    <div className="relative flex justify-between items-center heading">
+    <div className="relative flex justify-between items-center heading w-full">
       <FadingBackgroundImage
         src={
           originalImgUrl +
           (type === "movie" ? data.backdrop_path : data.profile_path)
         }
       />
-      <div className="z-10 flex flex-col lg:flex-row flex-1 lg:flex-auto">
-        <div className="h-full flex items-center justify-center my-5 sm:mb-0">
+      <div className="z-10 flex flex-col lg:flex-row flex-1 lg:flex-auto gap-5">
+        <div className="h-full flex items-center justify-center lg:my-5 my-1 sm:mb-0">
           <AnimatedGroup
             variants={{
               container: {
@@ -63,11 +63,11 @@ const Heading: FC<{
               priority
               height={400}
               alt=""
-              className="w-[20rem] sm:w-[18rem] h-full md:m-[2rem] rounded-md"
+              className="w-[14rem] sm:w-[18rem] h-full md:m-[2rem] rounded-md"
             />
           </AnimatedGroup>
         </div>
-        <div className="lg:my-[2rem] pl-5 pt-2">
+        <div className="lg:my-[2rem] md:pl-5 lg:pt-2">
           <div className="flex lg:flex-col justify-between lg:justify-start px-5 items-start lg:items-start gap-2">
             <div className="flex-col">
               <h2 className="text-base sm:text-2xl font-semibold">
@@ -125,7 +125,7 @@ const Heading: FC<{
             </div>
           ) : null}
           {type === "movie" ? (
-            <div>
+            <div className="pl-5 lg:pl-0">
               <p>{data.tagline}</p>
               <div>
                 <TextEffect per="word" as="h3" preset="slide">
@@ -134,7 +134,7 @@ const Heading: FC<{
               </div>
               <div className="">
                 <h2 className="text-gray-400 italic">Overview:</h2>
-                <div className="max-w-[30rem] text-sm font-light md:text-base text-green-100">
+                <div className="lg:max-w-[30rem] max-w-[21rem] text-sm font-light md:text-base text-green-100">
                   <TextEffect
                     per="line"
                     as="p"
@@ -168,7 +168,7 @@ const Heading: FC<{
               </div>
             </div>
           ) : (
-            <div>
+            <div className="pl-5 lg:pl-0">
               <div>
                 <h2 className="text-gray-400 italic">Place of birth:</h2>
                 <p className="max-w-[30rem] text-sm font-light md:text-base text-green-100">
@@ -189,7 +189,7 @@ const Heading: FC<{
               </div>
             </div>
           )}
-          <div className="grid grid-cols-4 gap-5 py-5">
+          <div className="grid grid-cols-4 gap-5 py-5 pl-5 lg:pl-0">
             {type === "movie" &&
               data.credits.crew
                 .filter((item: any, index: number, self: any) => {
@@ -232,7 +232,7 @@ const Heading: FC<{
       </div>
       <div className="">
         {type === "movie" && data["watch/providers"]?.results?.US ? (
-          <div className="hidden sm:flex pt-5 flex-col gap-2 pr-10">
+          <div className="hidden md:flex pt-5 flex-col gap-2 lg:pr-10">
             <h2 className="text-black italic">Watch Providers (US)</h2>
 
             {data["watch/providers"].results?.US?.buy?.map((item: any) => (

@@ -106,7 +106,7 @@ const MovieActions = ({
     // router.refresh();
   };
   return (
-    <ul className="flex gap-2 my-3 mt-8">
+    <ul className="flex gap-2 my-3 mt-8 overflow-hidden">
       {actions.map(({ id: itemId, icon, trueIcon, isChecked }) =>
         itemId == "rated" ? (
           <AddRatingDialouge
@@ -148,7 +148,7 @@ const MovieActions = ({
 
       <li className="flex items-center gap-2 text-gray-400 hover:text-green-300 cursor-pointer">
         <Button
-          className="bg-transparent hover:bg-gray-600/40 [&_svg]:size-5"
+          className="bg-transparent hover:bg-gray-600/40 [&_svg]:size-5 px-0 py-0 lg:px-4 lg:py-2"
           variant={"ghost"}
         >
           <Play />
